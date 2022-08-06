@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "LibreBaskerville-Bold";
+  src: url("./assets/fonts/LibreBaskerville-Bold.ttf");
+}
+
+@font-face {
+  font-family: "LibreBaskerville-Italic";
+  src: url("./assets/fonts/LibreBaskerville-Italic.ttf");
+}
+
+@font-face {
+  font-family: "LibreBaskerville-Regular";
+  src: url("./assets/fonts/LibreBaskerville-Regular.ttf");
+}
+
 .App {
   text-align: center;
 }
