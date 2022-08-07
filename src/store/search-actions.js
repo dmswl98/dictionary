@@ -20,7 +20,7 @@ export const fetchWordData = (word) => {
       const id = wordData.license.name.replace(/ /gi, "");
       const meanings = wordData.meanings.map((word) => {
         return {
-          partOfSpeech: word.partOfSpeech,
+          partOfSpeech: word.partOfSpeech.toUpperCase(),
           antonyms: word.antonyms,
           definitions: word.definitions.map((def) => {
             return {
