@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Search from "../../assets/images/Search";
-// import classes from "./WordForm.module.css";
+import classes from "./WordForm.module.css";
 
 const WordForm = (props) => {
   const wordInputRef = useRef("");
@@ -26,20 +26,27 @@ const WordForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label>search</label>
+    <form className={classes.form} onSubmit={submitHandler}>
+      <div className={classes["input-wrapper"]}>
+        <label className="visually-hidden">search</label>
         <input
+          className={classes.input}
           ref={wordInputRef}
           onFocus={wordInputFocusHandler}
           onBlur={wordInputBlurHandler}
           type="text"
         />
-        <button type="button">
-          <Search />
+        <button className={classes.button} type="button">
+          <Search
+            className={
+              isActive
+                ? `${classes.svg} ${classes["svg-active"]}`
+                : `${classes.svg}`
+            }
+          />
         </button>
       </div>
-      {/* <button>Search</button> */}
+      {/* <button className={classes.button}>Search</button> */}
     </form>
   );
 };

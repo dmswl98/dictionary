@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchWordData } from "../../store/search-actions";
 import WordForm from "./WordForm";
 import DefinitionList from "./Definition/DefinitionList";
-// import classes from "./Word.module.css";
+import classes from "./Word.module.css";
 
 let flag = false;
 
@@ -21,33 +21,6 @@ const Word = () => {
     dispatch(fetchWordData(word));
   }, [word, dispatch]);
 
-  // const getDefinitions = useCallback(async () => {
-  //   const res = await fetch(
-  //     `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-  //   );
-  //   const data = await res.json();
-  //   console.log(data[0]);
-  //   const wordData = await data[0];
-
-  //   const meaning = wordData.meanings.map((word) => {
-  //     return {
-  //       antonyms: word.antonyms,
-  //       definitions: word.definitions,
-  //       synonyms: word.synonyms,
-  //     };
-  //   });
-
-  //   // let idx = wordData.phonetics.findIndex((pho) => pho.text);
-
-  //   console.log({
-  //     word: wordData.word,
-  //     meaning,
-  //     phonetics: wordData.phonetics.map((pho) => {
-  //       if (pho.text) return pho.text;
-  //     }),
-  //   });
-  // }, [word]);
-
   const updateSearchWord = (text) => {
     setWord(text.toLowerCase());
   };
@@ -59,67 +32,27 @@ const Word = () => {
   return (
     <div>
       <WordForm onAdd={updateSearchWord} />
-      <section>
-        <header>
-          <div>
-            <h1>{wordData.word}</h1>
+      <section className={classes.result}>
+        <header className={classes["result-header"]}>
+          <div className={classes.title}>
+            <strong>{wordData.word}</strong>
           </div>
-          <div>
-            <ul>
+          <div className={classes.pronounces}>
+            <ul className={classes["pronounce-list"]}>
               {wordData.phonetics.map((pho, i) => (
-                <li key={i}>{pho}</li>
+                <li key={i} className={classes["pronounce-item"]}>
+                  {pho}
+                </li>
               ))}
             </ul>
           </div>
         </header>
-        <main>
-          <div>
-            <ul>
+        <main className={classes["result-main"]}>
+          <div className={classes.meaning}>
+            <ul className={classes["meaning-list"]}>
               {wordData.meanings.map((meaning, i) => (
                 <DefinitionList key={wordData.id + i} meaning={meaning} />
               ))}
-              {/* <li>
-                  <div>
-                    <p>antonyms(list)</p>
-                    <p>synonyms(list)</p>
-                    <p>partOfSpeech(string)</p>
-                    <ul>
-                      <li>
-                        <div>
-                          <p>definitions.definition</p>
-                          <p>definitions.example</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div>
-                          <p>definitions.definition</p>
-                          <p>definitions.example</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>antonyms(list)</p>
-                    <p>synonyms(list)</p>
-                    <p>partOfSpeech(string)</p>
-                    <ul>
-                      <li>
-                        <div>
-                          <p>definitions.definition</p>
-                          <p>definitions.example</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div>
-                          <p>definitions.definition</p>
-                          <p>definitions.example</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </li> */}
             </ul>
           </div>
         </main>

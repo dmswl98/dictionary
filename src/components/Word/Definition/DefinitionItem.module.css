@@ -1,0 +1,31 @@
+.definition-item {
+}
+
+.definition-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.definition-content {
+  display: flex;
+}
+
+.order {
+  position: relative;
+  top: 2px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 14px;
+}
+
+.definition {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+
+.example {
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -1,0 +1,39 @@
+.form {
+  width: 100%;
+}
+
+.input {
+  flex-grow: 1;
+  height: 46px;
+  border-radius: 8px;
+  border: 2px solid rgba(17, 17, 17, 0.32);
+  padding-left: 48px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.input:focus,
+.input:active {
+  border-color: rgba(17, 17, 17, 0.64);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  position: absolute;
+  left: 16px;
+}
+
+.svg {
+  display: block;
+  vertical-align: middle;
+  fill: rgba(17, 17, 17, 0.32);
+}
+
+.svg-active {
+  fill: rgba(17, 17, 17, 0.64);
+}

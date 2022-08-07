@@ -1,0 +1,50 @@
+.meaning-item:not(:last-child) {
+  margin-bottom: 68px;
+}
+
+.definitions {
+  display: flex;
+}
+
+.part-speech {
+  min-width: 140px;
+  font-weight: 700;
+  margin-right: 38px;
+}
+
+.relation-words {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+.antonyms,
+.synonyms {
+  display: flex;
+  padding: 10px 0;
+}
+
+.title {
+  margin-right: 28px;
+}
+
+.title strong {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.antonym-list,
+.synonym-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.antonym-item,
+.synonym-item {
+  padding: 0 6px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #526eff;
+  line-height: 24px;
+}
