@@ -1,0 +1,27 @@
+.antonyms {
+  display: flex;
+  padding: 10px 0;
+}
+
+.title {
+  margin-right: 28px;
+}
+
+.title strong {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.antonym-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.antonym-item {
+  padding: 0 6px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #526eff;
+  line-height: 24px;
+}

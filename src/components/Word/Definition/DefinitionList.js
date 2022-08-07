@@ -19,36 +19,12 @@ const DefinitionList = ({ meaning }) => {
               />
             ))}
           </ol>
-          <div className={classes["relation-words"]}>
-            {meaning.antonyms.length !== 0 && (
-              <div className={classes.antonyms}>
-                <div className={classes.title}>
-                  <strong>antonyms</strong>
-                </div>
-                <ul className={classes["antonym-list"]}>
-                  {meaning.antonyms.map((antonym, i) => (
-                    <li className={classes["antonym-item"]} key={i}>
-                      {antonym}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {meaning.synonyms.length !== 0 && (
-              <div className={classes.synonyms}>
-                <div className={classes.title}>
-                  <strong>synonyms</strong>
-                </div>
-                <ul className={classes["synonym-list"]}>
-                  {meaning.synonyms.map((synonym, i) => (
-                    <li className={classes["synonym-item"]} key={i}>
-                      {synonym}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          {(meaning.antonyms.length !== 0 || meaning.synonyms.length !== 0) && (
+            <RelationWord
+              antonyms={meaning.antonyms}
+              synonyms={meaning.synonyms}
+            />
+          )}
         </div>
       </div>
     </li>
