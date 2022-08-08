@@ -1,10 +1,11 @@
-import Word from "../components/Word/Word";
+import Layout from "../components/Layout/Layout";
+import Search from "../components/Word/Search";
 
 const Home = () => {
   return (
-    <div>
-      <Word />
-    </div>
+    <Layout>
+      <Search />
+    </Layout>
   );
 };
 

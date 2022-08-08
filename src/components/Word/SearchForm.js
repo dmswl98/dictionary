@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Search from "../../assets/images/Search";
-import classes from "./WordForm.module.css";
+import { searchActions } from "../../store/search-slice";
+import classes from "./SearchForm.module.css";
 
-const WordForm = (props) => {
+const SearchForm = () => {
+  const dispatch = useDispatch();
   const wordInputRef = useRef("");
   const [isActive, setIsActive] = useState(false);
-  console.log("wordForm");
+  console.log("SearchForm");
 
   const wordInputFocusHandler = () => {
     setIsActive(true);
@@ -21,7 +24,8 @@ const WordForm = (props) => {
     const enteredWord = wordInputRef.current.value;
     if (enteredWord.trim().length === 0) return;
 
-    props.onAdd(enteredWord);
+    // props.onAdd(enteredWord);
+    dispatch(searchActions.searchWord(enteredWord));
     wordInputRef.current.value = "";
   };
 
@@ -51,4 +55,4 @@ const WordForm = (props) => {
   );
 };
 
-export default WordForm;
+export default SearchForm;
