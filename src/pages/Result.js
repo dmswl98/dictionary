@@ -1,17 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
+import Layout from "../components/Layout/Layout";
 import Search from "../components/Word/Search";
-import ResultDetail from "../components/Word/ResultDetail";
 
 const Result = () => {
-  const params = useParams();
-  console.log(params);
+  const { word } = useParams();
+  console.log(word);
 
   return (
-    <React.Fragment>
-      <Search />
-      <ResultDetail />
-    </React.Fragment>
+    <Layout>
+      <Search word={word} />
+      <Outlet />
+    </Layout>
   );
 };
 
