@@ -1,3 +1,5 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
 import classes from "./MainHeader.module.css";
 
 const MainHeader = () => {
@@ -5,14 +7,12 @@ const MainHeader = () => {
     <header className={classes.header}>
       <h1>Dictionary</h1>
       <nav>
-        <ul>
-          <li>
-            <p>navigation</p>
-          </li>
-        </ul>
+        <NavLink className={classes["mypage-nav"]} to="/mypage">
+          My Page
+        </NavLink>
       </nav>
     </header>
   );
 };
 
-export default MainHeader;
+export default React.memo(MainHeader);
