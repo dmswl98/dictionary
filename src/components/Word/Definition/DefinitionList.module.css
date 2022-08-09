@@ -11,9 +11,3 @@
   font-weight: 700;
   margin-right: 38px;
 }
-
-.relation-words {
-  display: flex;
-  flex-direction: column;
-  margin: 50px 0;
-}
