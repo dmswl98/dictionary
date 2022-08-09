@@ -5,6 +5,10 @@
 }
 
 .result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 50px;
 }
 
 .title {
@@ -22,12 +26,29 @@
 .pronounce-list {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .pronounce-item:not(:last-child) {
   font-size: 16px;
   font-weight: 400;
   margin-right: 10px;
+}
+
+.header-right {
+}
+
+.save {
+}
+
+.svg {
+  display: block;
+  vertical-align: middle;
+  fill: rgba(17, 17, 17, 0.32);
+}
+
+.svg-active {
+  fill: #ffd760;
 }
 
 .result-main {

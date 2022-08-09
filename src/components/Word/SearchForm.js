@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import Search from "../../assets/images/Search";
+import Search from "../../assets/images/svg-search";
 import { searchActions } from "../../store/search-slice";
 import classes from "./SearchForm.module.css";
 
-const SearchForm = () => {
+const SearchForm = (props) => {
   const dispatch = useDispatch();
   const wordInputRef = useRef("");
   const [isActive, setIsActive] = useState(false);
@@ -23,7 +23,7 @@ const SearchForm = () => {
 
     const enteredWord = wordInputRef.current.value;
     if (enteredWord.trim().length === 0) return;
-
+    console.log(enteredWord);
     // props.onAdd(enteredWord);
     dispatch(searchActions.searchWord(enteredWord));
     wordInputRef.current.value = "";
@@ -50,9 +50,8 @@ const SearchForm = () => {
           />
         </button>
       </div>
-      {/* <button className={classes.button}>Search</button> */}
     </form>
   );
 };
 
-export default SearchForm;
+export default React.memo(SearchForm);
