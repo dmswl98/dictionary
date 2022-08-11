@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { bookActions } from "../../store/book-slice";
 import Modal from "../UI/Modal";
+import Close from "../../assets/images/svg-close";
 import classes from "./FolderModal.module.css";
 
 const FolderModal = (props) => {
+  const dispatch = useDispatch();
   const listNameRef = useRef();
   const [selectedColor, setSelectedColor] = useState("#FF595E");
-  const [isValidate, setIsValidate] = useState(false);
 
   const selectColorHandler = (e) => {
     setSelectedColor(e.target.value);
@@ -24,21 +27,28 @@ const FolderModal = (props) => {
 
     console.log(enteredListName);
     console.log(selectedColor);
-    setIsValidate(true);
-  };
 
-  const hideModalHandler = () => {
-    if (isValidate) props.onClose();
+    dispatch(
+      bookActions.createFolder({
+        name: enteredListName.trim(),
+        color: selectedColor.trim(),
+      })
+    );
+
+    props.onClose();
   };
 
   return (
     <Modal onClose={props.onClose}>
       <div>
-        <header className={classes.title}>
-          <h3>Create a new folder</h3>
+        <header className={classes.header}>
+          <h3 className={classes.title}>Create a new folder</h3>
+          <button onClick={props.onClose}>
+            <Close className={classes.svg} />
+          </button>
         </header>
         <main>
-          <form className={classes.form} onClick={submitHandler}>
+          <form className={classes.form} onSubmit={submitHandler}>
             <div className={classes["name-input"]}>
               <label className={classes.label}>List name</label>
               <input type="text" ref={listNameRef} />
@@ -107,9 +117,7 @@ const FolderModal = (props) => {
                 </label>
               </div>
             </div>
-            <button className={classes.submit} onClick={hideModalHandler}>
-              Create folder
-            </button>
+            <button className={classes.submit}>Create folder</button>
           </form>
         </main>
       </div>
