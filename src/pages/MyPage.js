@@ -5,29 +5,34 @@ import WordList from "../components/Word/WordList";
 import NoWordsFound from "../components/Word/NoWordsFound";
 import classes from "./MyPage.module.css";
 import FolderModal from "../components/Word/FolderModal";
+import FolderList from "../components/Word/FolderList";
 
 const MyPage = () => {
-  const [modalIsShown, setModalIsShown] = useState(false);
-  const items = useSelector((state) => state.book.items);
+  const [folderModalIsShown, setFolderModalIsShown] = useState(false);
+  const folders = useSelector((state) => state.book.folders);
 
   useEffect(() => {
-    console.log(modalIsShown);
-  }, [modalIsShown]);
+    console.log(folders);
+  }, [folders]);
 
   const showModalHandler = () => {
-    setModalIsShown(true);
+    setFolderModalIsShown(true);
   };
 
   const hideModalHandler = () => {
-    setModalIsShown(false);
+    setFolderModalIsShown(false);
   };
 
   return (
     <Layout>
-      <div className={classes["word-list"]}>
-        {modalIsShown && <FolderModal onClose={hideModalHandler} />}
-        {items.length === 0 && <NoWordsFound onShow={showModalHandler} />}
-        {items.length !== 0 && <WordList items={items} />}
+      <div className={classes["my-page"]}>
+        <button className={classes.button} onClick={showModalHandler}>
+          Create a new list
+        </button>
+        {folderModalIsShown && <FolderModal onClose={hideModalHandler} />}
+        {folders.length === 0 && <NoWordsFound onShow={showModalHandler} />}
+        {folders.length !== 0 && <FolderList folders={folders} />}
+        {/* {items.length !== 0 && <WordList items={items} />} */}
       </div>
     </Layout>
   );

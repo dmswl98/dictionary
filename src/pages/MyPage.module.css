@@ -1,3 +1,9 @@
-.word-list {
-  width: 100%;
+.button {
+  width: 300px;
+  height: 48px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #526eff;
+  color: #fff;
+  font-size: 15px;
 }

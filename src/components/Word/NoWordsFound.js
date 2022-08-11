@@ -1,6 +1,6 @@
 import classes from "./NoWordsFound.module.css";
 
-const NoWordsFound = (props) => {
+const NoWordsFound = () => {
   return (
     <div className={classes["not-found"]}>
       <h3 className={classes.title}>Not Found</h3>
@@ -9,7 +9,6 @@ const NoWordsFound = (props) => {
         <br />
         Start saving all your favorite words.
       </p>
-      <button onClick={props.onShow}>Create a new list</button>
     </div>
   );
 };

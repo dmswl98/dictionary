@@ -1,0 +1,28 @@
+.folder-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.folder {
+  /* display: flex; */
+}
+
+.button {
+  transition: all 80ms ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-0.4rem);
+}
+
+.svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.folder-name {
+  position: relative;
+  bottom: 16px;
+  text-align: center;
+  font-weight: 700;
+}
