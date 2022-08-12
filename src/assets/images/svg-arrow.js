@@ -1,3 +1,4 @@
+import React from "react";
 const Arrow = ({ className, onClick }) => {
   return (
     <svg
@@ -14,4 +15,4 @@ const Arrow = ({ className, onClick }) => {
   );
 };
 
-export default Arrow;
+export default React.memo(Arrow);

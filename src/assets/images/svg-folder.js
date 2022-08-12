@@ -1,3 +1,4 @@
+import React from "react";
 const Folder = ({ className, color }) => {
   return (
     <svg
@@ -10,7 +11,7 @@ const Folder = ({ className, color }) => {
     >
       <path
         d="M3 8C3 7.06812 3 6.60218 3.15224 6.23463C3.35523 5.74458 3.74458 5.35523 4.23463 5.15224C4.60218 5 5.06812 5 6 5H8.34315C9.16065 5 9.5694 5 9.93694 5.15224C10.3045 5.30448 10.5935 5.59351 11.1716 6.17157L13 8V11H3V8Z"
-        fill="black"
+        fill="white"
         fillOpacity="0.3"
       />
       <path
@@ -21,4 +22,4 @@ const Folder = ({ className, color }) => {
   );
 };
 
-export default Folder;
+export default React.memo(Folder);
