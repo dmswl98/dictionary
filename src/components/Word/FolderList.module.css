@@ -1,17 +1,14 @@
 .folder-list {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 50px;
 }
 
-.folder {
-  /* display: flex; */
-}
-
-.button {
+.folder div {
   transition: all 80ms ease-in-out;
 }
 
-.button:hover {
+.folder div:hover {
   transform: translateY(-0.4rem);
 }
 

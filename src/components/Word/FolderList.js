@@ -9,9 +9,11 @@ const FolderList = ({ folders }) => {
       <ul className={classes["folder-list"]}>
         {folders.map((folder) => (
           <li key={folder.id}>
-            <div className={classes.folder}>
-              <Link className={classes.button} to={`/mypage/${folder.name}`}>
-                <Folder className={classes.svg} color={folder.color} />
+            <div className={classes["folder-item"]}>
+              <Link className={classes.folder} to={`/mypage/${folder.name}`}>
+                <div>
+                  <Folder className={classes.svg} color={folder.color} />
+                </div>
               </Link>
               <p className={classes["folder-name"]}>{folder.name}</p>
             </div>
