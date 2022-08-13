@@ -1,0 +1,38 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 44px;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item a {
+  padding: 20px 16px;
+}
+
+.svg {
+  position: relative;
+  top: -2px;
+  display: block;
+  cursor: pointer;
+  fill: #fff;
+  transition: all 80ms ease-in-out;
+  margin-right: 10px;
+}
+
+.svg:hover {
+  fill: #000;
+  stroke: #fff;
+}
+
+.error {
+  text-align: center;
+  margin: 80px 0;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1.6px;
+}
