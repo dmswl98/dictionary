@@ -9,6 +9,9 @@ const searchSlice = createSlice({
     searchWord(state, action) {
       state.word = action.payload;
     },
+    resetWord(state) {
+      state.word = "";
+    },
   },
 });
 
