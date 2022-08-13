@@ -3,15 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 const bookSlice = createSlice({
   name: "book",
   initialState: {
-    items: [],
+    folders: [],
   },
   reducers: {
-    addWord(state, action) {
-      state.items = [...state.items, action.payload];
+    createFolder(state, action) {
+      state.folders.push({
+        id: new Date().toISOString(),
+        name: action.payload.name,
+        color: action.payload.color,
+        items: [],
+        count: 0,
+      });
     },
-    removeWord(state, action) {
-      const removeItem = action.payload;
-      state.items = state.items.filter((item) => item !== removeItem);
+    addWordToFolder(state, action) {
+      const folderIndex = state.folders.findIndex(
+        (folder) => folder.name === action.payload.name
+      );
+      state.folders[folderIndex].items.push(action.payload.word);
+      state.folders[folderIndex].count = state.folders[folderIndex].count + 1;
+    },
+    removeWordToFolder(state, action) {
+      const folderIndex = action.payload.index;
+      state.folders[folderIndex].count = state.folders[folderIndex].count - 1;
+      state.folders[folderIndex].items = state.folders[
+        folderIndex
+      ].items.filter((item) => item !== action.payload.word);
     },
   },
 });
