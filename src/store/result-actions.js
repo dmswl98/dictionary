@@ -14,8 +14,8 @@ export const fetchWordData = (word) => {
     };
 
     try {
+      dispatch(resultActions.changeErrorMessage(""));
       dispatch(resultActions.loadData(true));
-      dispatch(resultActions.occurError(""));
       const wordData = await fetchData();
       console.log(wordData);
       const id = wordData.license.name.replace(/ /gi, "");
@@ -36,12 +36,12 @@ export const fetchWordData = (word) => {
         .map((pho) => pho.text)
         .filter((it) => it);
 
-      console.log({
-        id,
-        word: wordData.word,
-        meanings,
-        phonetics,
-      });
+      // console.log({
+      //   id,
+      //   word: wordData.word,
+      //   meanings,
+      //   phonetics,
+      // });
       dispatch(
         resultActions.replaceWord({
           id,
@@ -51,9 +51,10 @@ export const fetchWordData = (word) => {
         })
       );
       dispatch(resultActions.loadData(false));
+      dispatch(resultActions.changeErrorMessage(""));
     } catch (err) {
       console.error(err);
-      dispatch(resultActions.occurError(err.message));
+      dispatch(resultActions.changeErrorMessage(err.message));
       dispatch(resultActions.loadData(false));
     }
   };
