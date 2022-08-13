@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookActions } from "../../store/book-slice";
 import Modal from "../UI/Modal";
 import Close from "../../assets/images/svg-close";
@@ -8,7 +8,9 @@ import classes from "./FolderModal.module.css";
 const FolderModal = (props) => {
   const dispatch = useDispatch();
   const listNameRef = useRef();
+  const folders = useSelector((state) => state.book.folders);
   const [selectedColor, setSelectedColor] = useState("#FF595E");
+  const [error, setError] = useState(false);
 
   const selectColorHandler = (e) => {
     setSelectedColor(e.target.value);
@@ -25,8 +27,13 @@ const FolderModal = (props) => {
     )
       return;
 
-    console.log(enteredListName);
-    console.log(selectedColor);
+    for (const folder of folders) {
+      if (folder.name === enteredListName) {
+        listNameRef.current.value = "";
+        setError(true);
+        return;
+      }
+    }
 
     dispatch(
       bookActions.createFolder({
@@ -52,6 +59,9 @@ const FolderModal = (props) => {
             <div className={classes["name-input"]}>
               <label className={classes.label}>List name</label>
               <input type="text" ref={listNameRef} />
+              {error && (
+                <p className={classes.error}>Please change the folder name</p>
+              )}
             </div>
             <div className={classes["color-input"]}>
               <label className={classes.label}>Pick a color of folder</label>
