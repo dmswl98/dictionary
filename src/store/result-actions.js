@@ -7,7 +7,7 @@ export const fetchWordData = (word) => {
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
       if (!res.ok) {
-        throw new Error("해당 단어를 찾을 수 없습니다.");
+        throw new Error("Not found. Try again");
       }
       const data = await res.json();
       return data[0];
@@ -15,6 +15,7 @@ export const fetchWordData = (word) => {
 
     try {
       dispatch(resultActions.loadData(true));
+      dispatch(resultActions.occurError(""));
       const wordData = await fetchData();
       console.log(wordData);
       const id = wordData.license.name.replace(/ /gi, "");
