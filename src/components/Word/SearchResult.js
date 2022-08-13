@@ -1,32 +1,87 @@
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bookActions } from "../../store/book-slice";
-import { resultActions } from "../../store/result-slice";
 import DefinitionList from "./Definition/DefinitionList";
+import SaveModal from "./SaveModal";
+import { bookActions } from "../../store/book-slice";
 import Star from "../../assets/images/svg-star";
 import classes from "./SearchResult.module.css";
-import { useEffect } from "react";
+
+const matchColor = (colorCode) => {
+  let colorClass;
+  switch (colorCode) {
+    case "#FF595E":
+      colorClass = "red";
+      break;
+    case "#FFCA3A":
+      colorClass = "yellow";
+      break;
+    case "#8AC926":
+      colorClass = "green";
+      break;
+    case "#1982C4":
+      colorClass = "blue";
+      break;
+    case "#6A4C93":
+      colorClass = "purple";
+      break;
+  }
+  return colorClass;
+};
 
 const SearchResult = () => {
   const dispatch = useDispatch();
   const wordData = useSelector((state) => state.result.resultData);
-  const items = useSelector((state) => state.book.items);
+  const folders = useSelector((state) => state.book.folders);
   const isLoading = useSelector((state) => state.result.isLoading);
-  // const isSaved = wordData.isSaved;
+  const error = useSelector((state) => state.result.errorMessage);
+  const [saveModalIsShown, setSaveModalIsShown] = useState(false);
+
+  useEffect(() => {
+    console.log(folders);
+  }, [folders]);
+
+  const showModalHandler = () => {
+    if (!isSaved) setSaveModalIsShown(true);
+    else {
+      const folderIndex = folders.findIndex(
+        (folder) =>
+          folder.items.filter((item) => item === wordData.word).length > 0
+      );
+      dispatch(
+        bookActions.removeWordToFolder({
+          index: folderIndex,
+          word: wordData.word,
+        })
+      );
+    }
+  };
+
+  const hideModalHandler = () => {
+    setSaveModalIsShown(false);
+  };
+
+  const isSaved =
+    folders
+      .map((folder) => folder.items)
+      .flat()
+      .filter((word) => word === wordData.word).length !== 0;
+
+  let colorClass = "";
+
+  if (isSaved) {
+    const colorIndex = folders.findIndex(
+      (folder) =>
+        folder.items.filter((item) => item === wordData.word).length > 0
+    );
+    colorClass = matchColor(folders[colorIndex].color);
+  }
+
   {
     /* {isLoading && <p>loading...</p>}
         {!isLoading && <p>{word}</p>} */
   }
-  let isSaved = items.filter((item) => item === wordData.word).length;
 
-  const saveWordHandler = () => {
-    if (!isSaved) {
-      dispatch(bookActions.addWord(wordData.word));
-    } else {
-      dispatch(bookActions.removeWord(wordData.word));
-    }
-  };
-
-  return (
+  const content = (
     <section className={classes.result}>
       <header className={classes["result-header"]}>
         <div className={classes["header-left"]}>
@@ -47,16 +102,19 @@ const SearchResult = () => {
           <button
             className={classes.save}
             type="button"
-            onClick={saveWordHandler}
+            onClick={showModalHandler}
           >
             <Star
               className={
                 isSaved
-                  ? `${classes.svg} ${classes["svg-active"]}`
+                  ? `${classes.svg} ${classes[`${colorClass}`]}`
                   : `${classes.svg}`
               }
             />
           </button>
+          {saveModalIsShown && (
+            <SaveModal folders={folders} onClose={hideModalHandler} />
+          )}
         </div>
       </header>
       <main className={classes["result-main"]}>
@@ -69,6 +127,16 @@ const SearchResult = () => {
         </div>
       </main>
     </section>
+  );
+
+  return (
+    <div className={classes["search-result"]}>
+      {error.length !== 0 && <p className={classes.error}>{error}</p>}
+      {isLoading && error.length === 0 && (
+        <div className={classes.spinner}></div>
+      )}
+      {!isLoading && error.length === 0 && content}
+    </div>
   );
 };
 

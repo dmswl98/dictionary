@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.folder-list {
+  max-height: 180px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.folder-item {
+  position: relative;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.hover:hover {
+  background-color: rgba(17, 17, 17, 0.16);
+}
+
+.active {
+  color: #fff;
+  background-color: rgba(82, 110, 255, 0.8);
+}
+
+.radio-label {
+  width: 100%;
+  height: 100%;
+}
+
+.radio-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.submit {
+  width: 100%;
+  height: 48px;
+  background-color: #526eff;
+  border-radius: 12px;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.submit:hover {
+  background-color: #3c5cfa;
+}
