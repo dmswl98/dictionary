@@ -1,12 +1,12 @@
 .form {
-  width: 100%;
+  margin: 20px 30px;
 }
 
 .input {
   flex-grow: 1;
   height: 46px;
   border-radius: 8px;
-  border: 2px solid rgba(17, 17, 17, 0.32);
+  border: 3px solid #545d68;
   padding-left: 48px;
   font-size: 16px;
   font-weight: 400;
@@ -14,7 +14,7 @@
 
 .input:focus,
 .input:active {
-  border-color: rgba(17, 17, 17, 0.64);
+  border-color: #fff;
 }
 
 .input-wrapper {
@@ -31,9 +31,9 @@
 .svg {
   display: block;
   vertical-align: middle;
-  fill: rgba(17, 17, 17, 0.32);
+  fill: #545d68;
 }
 
 .svg-active {
-  fill: rgba(17, 17, 17, 0.64);
+  fill: #fff;
 }
