@@ -22,7 +22,7 @@ const resultSlice = createSlice({
       state.resultData.meanings = action.payload.meanings;
       state.resultData.phonetics = action.payload.phonetics;
     },
-    occurError(state, action) {
+    changeErrorMessage(state, action) {
       state.errorMessage = action.payload;
     },
   },
