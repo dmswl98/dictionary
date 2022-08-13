@@ -3,7 +3,7 @@ import DefinitionItem from "./DefinitionItem";
 import classes from "./DefinitionList.module.css";
 
 const DefinitionList = ({ meaning }) => {
-  console.log("Defin", meaning);
+  // console.log("Defin", meaning);
   return (
     <li className={classes["meaning-item"]}>
       <div className={classes.definitions}>

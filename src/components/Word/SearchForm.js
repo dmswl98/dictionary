@@ -8,7 +8,6 @@ const SearchForm = (props) => {
   const dispatch = useDispatch();
   const wordInputRef = useRef("");
   const [isActive, setIsActive] = useState(false);
-  console.log("SearchForm");
 
   const wordInputFocusHandler = () => {
     setIsActive(true);
@@ -23,7 +22,7 @@ const SearchForm = (props) => {
 
     const enteredWord = wordInputRef.current.value;
     if (enteredWord.trim().length === 0) return;
-    console.log(enteredWord);
+
     // props.onAdd(enteredWord);
     dispatch(searchActions.searchWord(enteredWord));
     wordInputRef.current.value = "";
