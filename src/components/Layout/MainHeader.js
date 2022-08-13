@@ -5,7 +5,9 @@ import classes from "./MainHeader.module.css";
 const MainHeader = () => {
   return (
     <header className={classes.header}>
-      <h1>Dictionary</h1>
+      <NavLink end to="/">
+        <h1>Dictionary</h1>
+      </NavLink>
       <nav>
         <NavLink className={classes["mypage-nav"]} to="/mypage">
           My Page
