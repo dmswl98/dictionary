@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
-import WordCardList from "../components/Word/WordCardList";
-import Arrow from "../assets/images/svg-arrow";
+
+import WordCardList from "../../components/WordCard/WordCardList";
+
+import Arrow from "../../assets/images/svg-arrow";
 import classes from "./WordList.module.css";
 
 const WordList = () => {
@@ -11,6 +12,7 @@ const WordList = () => {
   const { folderName } = useParams();
   const [sortType, setSortType] = useState("");
   const folders = useSelector((state) => state.book.folders);
+
   const selectedFolder = folders.filter(
     (folder) => folder.name === folderName
   )[0].items;
@@ -24,7 +26,7 @@ const WordList = () => {
   };
 
   return (
-    <Layout>
+    <React.Fragment>
       <div className={classes.menu}>
         <div className={classes["menu-left"]}>
           <div className={classes["menu-item"]}>
@@ -58,7 +60,7 @@ const WordList = () => {
       {selectedFolder.length !== 0 && (
         <WordCardList items={selectedFolder} sort={sortType} />
       )}
-    </Layout>
+    </React.Fragment>
   );
 };
 

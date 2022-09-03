@@ -1,0 +1,12 @@
+.home {
+  width: 100%;
+  height: calc(100vh - 78px);
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  width: 100%;
+  margin: 0 100px;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,11 @@
+.not-found {
+  height: calc(100vh - 78px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg {
+  width: 500px;
+  height: auto;
+}
