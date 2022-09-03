@@ -36,12 +36,6 @@ export const fetchWordData = (word) => {
         .map((pho) => pho.text)
         .filter((it) => it);
 
-      // console.log({
-      //   id,
-      //   word: wordData.word,
-      //   meanings,
-      //   phonetics,
-      // });
       dispatch(
         resultActions.replaceWord({
           id,
