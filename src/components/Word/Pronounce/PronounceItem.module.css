@@ -1,0 +1,5 @@
+.pronounce-item:not(:last-child) {
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 10px;
+}
