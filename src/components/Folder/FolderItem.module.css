@@ -1,14 +1,8 @@
-.folder-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 50px;
-}
-
-.folder div {
+.svg-wrapper {
   transition: all 80ms ease-in-out;
 }
 
-.folder div:hover {
+.svg-wrapper:hover {
   transform: translateY(-0.4rem);
 }
 
