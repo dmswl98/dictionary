@@ -1,6 +1,6 @@
 import classes from "./WordCardList.module.css";
 
-const sortList = (list, sortType) => {
+const sortList = (list, sortType = "default") => {
   if (sortType === "default") return list;
   else if (sortType === "asc") return list.sort((a, b) => a.localeCompare(b));
   else if (sortType === "desc") return list.sort((a, b) => b.localeCompare(a));

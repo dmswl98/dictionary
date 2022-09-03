@@ -1,13 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Search from "../../assets/images/svg-search";
+import { useNavigate } from "react-router-dom";
+
 import { searchActions } from "../../store/search-slice";
+
+import Search from "../../assets/images/svg-search";
 import classes from "./SearchForm.module.css";
 
-const SearchForm = (props) => {
+const SearchForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const wordInputRef = useRef("");
   const [isActive, setIsActive] = useState(false);
+  const [enteredSearchWord, setEnteredSearchWord] = useState("");
+
+  const searchWordChangeHandler = (e) => {
+    setEnteredSearchWord(e.target.value);
+  };
 
   const wordInputFocusHandler = () => {
     setIsActive(true);
@@ -20,12 +28,13 @@ const SearchForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const enteredWord = wordInputRef.current.value;
-    if (enteredWord.trim().length === 0) return;
+    const word = enteredSearchWord;
+    if (word.trim().length === 0) return;
 
-    // props.onAdd(enteredWord);
-    dispatch(searchActions.searchWord(enteredWord));
-    wordInputRef.current.value = "";
+    dispatch(searchActions.searchWord(word));
+    setEnteredSearchWord("");
+
+    navigate(`/search/${word}`);
   };
 
   return (
@@ -33,13 +42,15 @@ const SearchForm = (props) => {
       <div className={classes["input-wrapper"]}>
         <label className="visually-hidden">search</label>
         <input
+          value={enteredSearchWord}
+          placeholder="Search for any word or phrase"
           className={classes.input}
-          ref={wordInputRef}
+          onChange={searchWordChangeHandler}
           onFocus={wordInputFocusHandler}
           onBlur={wordInputBlurHandler}
           type="text"
         />
-        <button className={classes.button} type="button">
+        <button className={classes.button} type="submit">
           <Search
             className={
               isActive
