@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Close from "../../assets/images/svg-close";
-import { bookActions } from "../../store/book-slice";
+
 import Modal from "../UI/Modal";
+
+import { bookActions } from "../../store/book-slice";
+
+import Close from "../../assets/images/svg-close";
 import classes from "./SaveModal.module.css";
 
 const SaveModal = (props) => {
-  const { word } = useParams();
   const dispatch = useDispatch();
+  const { word } = useParams();
   const [selectedFolder, setSelectedFolder] = useState("");
 
   const selectedFolderHandler = (e) => {
