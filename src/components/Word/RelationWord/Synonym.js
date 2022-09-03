@@ -1,6 +1,6 @@
-import classes from "./SynonymList.module.css";
+import classes from "./Synonym.module.css";
 
-const SynonymList = ({ synonyms }) => {
+const Synonym = ({ synonyms }) => {
   return (
     <div className={classes.synonyms}>
       <div className={classes.title}>
@@ -17,4 +17,4 @@ const SynonymList = ({ synonyms }) => {
   );
 };
 
-export default SynonymList;
+export default Synonym;

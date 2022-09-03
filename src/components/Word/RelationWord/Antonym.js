@@ -1,6 +1,6 @@
-import classes from "./AntonymList.module.css";
+import classes from "./Antonym.module.css";
 
-const AntonymList = ({ antonyms }) => {
+const Antonym = ({ antonyms }) => {
   return (
     <div className={classes.antonyms}>
       <div className={classes.title}>
@@ -17,4 +17,4 @@ const AntonymList = ({ antonyms }) => {
   );
 };
 
-export default AntonymList;
+export default Antonym;
